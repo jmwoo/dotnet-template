@@ -1,3 +1,5 @@
+using lib.Models;
+using lib.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -6,11 +8,13 @@ namespace api.Controllers;
 [Route("")]
 public class TestController : ControllerBase
 {
-    private readonly ILogger<TestController> _logger;
+    readonly ILogger<TestController> _logger;
+    readonly ITestService _testService;
 
-    public TestController(ILogger<TestController> logger)
+    public TestController(ILogger<TestController> logger, ITestService testService)
     {
         _logger = logger;
+        _testService = testService;
     }
 
     [HttpGet("")]
@@ -20,11 +24,12 @@ public class TestController : ControllerBase
     }
 
     [HttpGet("test")]
-    public object GetTest()
+    public async Task<Test> GetTest([FromQuery] string? msg)
     {
-        return new 
-        {
-            hello = "world"
-        };
+        Test test = await _testService.GetTestAsync(msg);
+
+        _logger.LogInformation(test.Message);
+
+        return test;
     }
 }

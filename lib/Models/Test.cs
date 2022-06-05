@@ -1,10 +1,5 @@
-﻿using System;
-
-namespace lib.Models
+﻿namespace lib.Models
 {
-	public class Test
-	{
-		public string Hello { get; set; }
-	}
+    public record Test(int TestId, string Message, DateTime Timestamp);
 }
 
