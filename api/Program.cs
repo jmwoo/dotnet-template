@@ -1,8 +1,8 @@
-using lib.Config;
+﻿using lib.Config;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-ServiceConfig.ConfigureServices(builder.Services);
+LibServiceConfig.ConfigureLibServices(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -12,8 +12,8 @@ WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

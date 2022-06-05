@@ -1,20 +1,20 @@
-using lib.Models;
+﻿using lib.Models;
 
 namespace lib.Services;
 
 public interface ITestService
 {
-	Task<Test> GetTestAsync(string? message);
+	Task<Test> GetTestAsync(string? message = null);
 }
 
-public class  TestService : ITestService
+public class TestService : ITestService
 {
 	private int _id;
 
-    public TestService()
-    {
+	public TestService()
+	{
 		_id = 0;
-    }
+	}
 
 	public async Task<Test> GetTestAsync(string? message)
 	{

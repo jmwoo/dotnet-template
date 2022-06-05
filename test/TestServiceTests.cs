@@ -6,20 +6,20 @@ namespace test;
 
 public class TestServiceTests
 {
-    readonly TestService _testService;
+	readonly TestService _testService;
 
-    public TestServiceTests()
-    {
-        _testService = new();
-    }
+	public TestServiceTests()
+	{
+		_testService = new();
+	}
 
-    [Fact]
-    public async Task GetTestAsync_IsHelloWorld()
-    {
-        const string message = "hello test";
-        Test test = await _testService.GetTestAsync(message);
-        Assert.Equal(message, test.Message);
-        Assert.NotEqual(default, test.TestId);
-        Assert.NotEqual(default, test.Timestamp);
-    }
+	[Fact]
+	public async Task GetTestAsync_IsHelloWorld()
+	{
+		const string message = "hello test";
+		Test test = await _testService.GetTestAsync(message);
+		Assert.Equal(message, test.Message);
+		Assert.NotEqual(default, test.TestId);
+		Assert.NotEqual(default, test.Timestamp);
+	}
 }
