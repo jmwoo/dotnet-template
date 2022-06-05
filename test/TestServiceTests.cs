@@ -19,5 +19,7 @@ public class TestServiceTests
         const string message = "hello test";
         Test test = await _testService.GetTestAsync(message);
         Assert.Equal(message, test.Message);
+        Assert.NotEqual(default, test.TestId);
+        Assert.NotEqual(default, test.Timestamp);
     }
 }

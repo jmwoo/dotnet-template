@@ -1,8 +1,8 @@
-using lib.Services;
+using lib.Config;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<ITestService, TestService>();
+ServiceConfig.ConfigureServices(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
